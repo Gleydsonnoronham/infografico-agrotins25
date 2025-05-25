@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Interativo: Agrotins 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Application Structure Plan: 
+        The SPA is structured thematically:
+        1. Hero/Intro: Title, subtitle, key overall stats (visitors, R$ movement with a comparison chart, exhibitors, park size, novelties).
+        2. Event Highlights: Cards for IFTO, Unitins, FAPT, Familiar Agriculture, Social Impact (Agrotins Alimenta), with relevant images. A donut chart for "Innovation Focus Areas".
+        3. Management Analysis: Cards for Logistics, Marketing, and Customer Relations.
+        4. Conclusions & Impact: Summarized conclusions, importance for Tocantins. A horizontal bar chart for "Impact Areas".
+        5. Recommendations: Lists for future editions and sector players.
+        6. Sources: List of cited sources.
+        A sticky top navigation bar allows quick jumps. This narrative flow (overview -> specifics -> operations -> impact -> future -> sources) aims for better engagement and credibility.
+    -->
+    <!-- Visualization & Content Choices:
+        - R$ 5.07B vs R$ 4.02B: Goal: Compare. Viz: Bar Chart (Chart.js). Interaction: Tooltip. Justification: Clear visual comparison. Source indicated.
+        - Visitors, Exhibitors, Park Size, Municipalities: Goal: Inform. Viz: Large styled numbers (HTML/Tailwind). Justification: Quick stats. Sources indicated where applicable.
+        - IFTO, Unitins, FAPT details: Goal: Inform. Viz: Styled cards with text, Unicode icons, and embedded images. Justification: Concise findings, visual context. Sources indicated.
+        - Innovation Focus Areas (Qualitative): Goal: Organize/Inform. Viz: Donut Chart (Chart.js) - categories: Food, Productivity, Research, Sustainability. Data: Illustrative. Interaction: Tooltip. Justification: Visual summary.
+        - Agrotins Alimenta: Goal: Inform. Viz: Styled list/stats in a card. Justification: Clear social impact.
+        - Logistics, Marketing, CRM: Goal: Organize/Inform. Viz: Cards with bullet points. Justification: Structured summary.
+        - Importance of Agrotins (Qualitative Impact Areas): Goal: Inform/Organize. Viz: Horizontal Bar Chart (Chart.js) - labels: Economic Dev, Tech Innovation, Networking, Familiar Agr. Support. Data: Illustrative. Interaction: Tooltip. Justification: Visual impact areas.
+        - Recommendations: Goal: Inform. Viz: Styled lists. Justification: Actionable points.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0FDF4; /* Green 50 - Fundo da página */
+            color: #1A2E05; /* Verde Floresta Escuro - Texto Principal */
+            scroll-behavior: smooth;
+        }
+        .card {
+            background-color: #FFFFFF; /* Branco */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); /* shadow-lg */
+            padding: 1.5rem; /* p-6 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 320px;
+                max-height: 380px;
+            }
+        }
+        .stat-highlight { color: #FF9800; } /* Laranja - Destaque para estatísticas */
+        .text-accent-main { color: #4CAF50; } /* Verde Vibrante - Destaque principal */
+        .text-accent-secondary { color: #3A5F0B; } /* Verde Oliva Escuro - Texto secundário/detalhes */
+        .text-accent-earth { color: #A0522D; } /* Marrom Siena/Terra - Destaque terroso */
+        
+        nav a { color: #3A5F0B; /* Verde Oliva Escuro para links da navegação */ }
+        nav a:hover { color: #FF9800; /* Laranja para hover na navegação */ }
+
+        .bg-highlight-soft { background-color: #E8F5E9; /* Green 100 - Fundo suave para stats */ }
+        .border-highlight-soft { border-color: #D1FAE5; /* Green 200 - Borda suave */ }
+        
+        .source-ref {
+            font-size: 0.7rem;
+            vertical-align: super;
+            color: #FF9800; /* Laranja para destaque da referência */
+            margin-left: 2px;
+            text-decoration: none;
+        }
+        .source-ref:hover {
+            text-decoration: underline;
+        }
+        .embedded-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-top: 0.75rem; /* mt-3 */
+            margin-bottom: 0.75rem; /* mb-3 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center h-16 space-x-2 sm:space-x-4">
+                <a href="#introducao" class="font-semibold text-xs sm:text-sm">Introdução</a>
+                <a href="#destaques" class="font-semibold text-xs sm:text-sm">Destaques</a>
+                <a href="#gestao" class="font-semibold text-xs sm:text-sm">Gestão</a>
+                <a href="#impacto" class="font-semibold text-xs sm:text-sm">Impacto</a>
+                <a href="#recomendacoes" class="font-semibold text-xs sm:text-sm">Recomendações</a>
+                <a href="#fontes" class="font-semibold text-xs sm:text-sm">Fontes</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-stone-800 mb-3">Agrotins 2025: Relatório Interativo</h1>
+            <p class="text-lg md:text-xl text-accent-secondary">Uma Análise da AgroEvolução no Coração do Brasil</p>
+        </header>
+
+        <section id="introducao" class="my-10 md:my-16">
+            <h2 class="text-3xl font-bold text-accent-secondary mb-6 text-center">Introdução: A Grandeza da Agrotins 2025</h2>
+            <div class="card mb-8">
+                <p class="leading-relaxed mb-4">
+                    A Agrotins 2025, realizada de 13 a 17 de maio sob o tema central <strong class="text-accent-earth">"AgroEvolução" 🌱</strong>, reafirmou sua magnitude como a principal feira de tecnologia agropecuária do Norte do Brasil. Sediada no Parque Agrotecnológico Eng. Mauro Medanha em Palmas-TO (com <strong class="text-accent-earth">~700 mil m²</strong>), o evento destacou-se por melhorias como um novo <strong class="text-accent-earth">Pier e exposições náuticas ⚓</strong>. Esta análise compila as observações de uma visita técnica focada em avanços, gestão e o dinamismo do agronegócio tocantinense.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center mb-6">
+                    <div class="bg-highlight-soft p-4 rounded-lg shadow">
+                        <div class="text-4xl font-bold stat-highlight">~200K<a href="#fonte-3" class="source-ref">[3]</a></div>
+                        <div class="text-sm text-accent-secondary mt-1">Visitantes</div>
+                    </div>
+                    <div class="bg-highlight-soft p-4 rounded-lg shadow">
+                        <div class="text-4xl font-bold stat-highlight">1,2K</div>
+                        <div class="text-sm text-accent-secondary mt-1">Expositores (+33%)</div>
+                    </div>
+                    <div class="bg-highlight-soft p-4 rounded-lg shadow">
+                        <div class="text-4xl font-bold stat-highlight">139</div>
+                        <div class="text-sm text-accent-secondary mt-1">Municípios Mobilizados</div>
+                    </div>
+                     <div class="bg-highlight-soft p-4 rounded-lg shadow">
+                        <div class="text-4xl font-bold stat-highlight">16<a href="#fonte-6" class="source-ref">[6]</a></div>
+                        <div class="text-sm text-accent-secondary mt-1">Inovações do IFTO</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">A organização, liderada pelo Governo do Tocantins e diversos parceiros, foi fundamental para o sucesso do evento.</p>
+                <div>
+                    <h3 class="text-xl font-semibold text-accent-secondary mb-3 text-center">Movimentação Financeira (em Bilhões R$)</h3>
+                    <div class="chart-container" style="height: 280px; max-height: 300px;">
+                        <canvas id="financeiroChart"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-500 text-center mt-2">A Agrotins 2025 movimentou R$ 5,07 bilhões<a href="#fonte-3" class="source-ref">[3]</a>, superando os R$ 4,02 bilhões de 2024.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="destaques" class="my-10 md:my-16">
+            <h2 class="text-3xl font-bold text-accent-secondary mb-8 text-center">Destaques da Visita: Inovação e Impacto</h2>
+             <p class="text-center text-accent-secondary mb-8 max-w-3xl mx-auto">A feira foi um palco vibrante para inovações tecnológicas<a href="#fonte-2" class="source-ref">[2]</a>, pesquisa científica e iniciativas de impacto social, com instituições de ensino e fomento<a href="#fonte-8" class="source-ref">[8]</a> desempenhando papéis cruciais.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-2">💡 IFTO: Vitrine Tecnológica</h3>
+                    <p class="text-sm mb-2">Com 16 inovações<a href="#fonte-6" class="source-ref">[6]</a>, o IFTO brilhou. Destaques:</p>
+                    <div class="my-3">
+                        <img src="URL_DA_SUA_IMAGEM_IXOGURTE.jpg" alt="Imagem do Ixogurte, iogurte da flor ixora" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Ixogurte+Indisponível'; this.alt='Imagem do Ixogurte indisponível'">
+                    </div>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><strong>Ixogurte:</strong> Iogurte inovador da flor de ixora.<a href="#fonte-5" class="source-ref">[5]</a><a href="#fonte-7" class="source-ref">[7]</a></li>
+                        <li><strong>Beephona:</strong> Tampa para colmeias que pode aumentar a produção de mel em 50%.<a href="#fonte-5" class="source-ref">[5]</a></li>
+                        <li><strong>Cão Robô:</strong> Demonstração de tecnologia robótica aplicada ao campo.<a href="#fonte-5" class="source-ref">[5]</a></li>
+                    </ul>
+                     <img src="URL_DA_SUA_IMAGEM_CAO_ROBO.jpg" alt="Imagem do Cão Robô apresentado na Agrotins" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Cão+Robô+Indisponível'; this.alt='Imagem do Cão Robô indisponível'">
+                    <p class="text-xs text-gray-500 mt-2">Muitos outros projetos relevantes em alimentos e tecnologia foram exibidos.<a href="#fonte-6" class="source-ref">[6]</a></p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-2">🔬 Unitins: Avanço Científico</h3>
+                    <img src="URL_DA_SUA_IMAGEM_UNITINS.jpg" alt="Imagem do estande da Unitins na Agrotins 2025" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Unitins+Indisponível'; this.alt='Imagem do estande da Unitins indisponível'">
+                    <p class="text-sm mb-2">A Unitins demonstrou a força da pesquisa com estudos sobre fungos agrícolas e um laboratório entomológico detalhado. Seu estande recebeu mais de 4 mil visitantes.<a href="#fonte-4" class="source-ref">[4]</a></p>
+                    <p class="text-xs text-gray-500 mt-2">Diversos outros estudos importantes para o agro e meio ambiente foram apresentados.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-2">🚀 FAPT & CT&I: Hub de Criatividade</h3>
+                    <img src="URL_DA_SUA_IMAGEM_PAVILHAO_CTI.jpg" alt="Imagem do Pavilhão de Ciência, Tecnologia e Inovação da FAPT na Agrotins" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Pavilhão+CT&I+Indisponível'; this.alt='Imagem do Pavilhão CT&I indisponível'">
+                    <p class="text-sm mb-2">O Pavilhão CT&I, com a FAPT, impulsionou a maratona "FAPTGulhas"<a href="#fonte-1" class="source-ref">[1]</a> e exibiu diversas tecnologias emergentes e startups.</p>
+                    <p class="text-xs text-gray-500 mt-2">Foco em agricultura de precisão, bioeconomia e energias renováveis.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-2">🧺 Agricultura Familiar: Riqueza Local</h3>
+                    <p class="text-sm">O pavilhão destacou a diversidade produtiva e cultural do Tocantins, com artesanatos e produtos de povos tradicionais.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-2">🤝 Agrotins Alimenta: Impacto Social</h3>
+                    <p class="text-sm mb-2">O projeto arrecadou:</p>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><strong class="stat-highlight">~3 mil</strong> cestas básicas</li>
+                        <li><strong class="stat-highlight">R$ 100 mil</strong> em doações</li>
+                    </ul>
+                     <p class="text-xs text-gray-500 mt-2">Coordenado pela primeira-dama do estado, Karynne Sotero.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-2 text-center">🎯 Focos de Inovação</h3>
+                     <p class="text-xs text-gray-500 text-center mb-2">Áreas de destaque nas inovações apresentadas.</p>
+                    <div class="chart-container" style="height: 250px; max-height: 280px;">
+                        <canvas id="inovacaoFocoChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gestao" class="my-10 md:my-16">
+            <h2 class="text-3xl font-bold text-accent-secondary mb-8 text-center">Análise da Gestão do Evento</h2>
+            <p class="text-center text-accent-secondary mb-8 max-w-3xl mx-auto">Uma visão administrativa sobre a Agrotins 2025, abordando logística, marketing e relacionamento com o cliente, identificando pontos fortes e oportunidades de melhoria.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-earth mb-2">🚚 Organização e Logística</h3>
+                    <p class="text-sm mb-1"><strong>Positivo:</strong> Evento bem organizado internamente, variedade alimentar.</p>
+                    <p class="text-sm"><strong>Desafios:</strong> Congestionamento no acesso, estacionamento lotado, manutenção de sanitários.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-earth mb-2">📢 Marketing e Comunicação</h3>
+                    <p class="text-sm">Estratégias visíveis com outdoors, banners criativos (Engetins) e panfletagem interna.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-earth mb-2">👥 Relacionamento com Cliente</h3>
+                    <p class="text-sm">Atendimento satisfatório, com destaque para clareza dos apresentadores da Unitins e FAPT.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto" class="my-10 md:my-16">
+            <h2 class="text-3xl font-bold text-accent-secondary mb-8 text-center">Conclusões e Impacto Estratégico</h2>
+            <div class="card mb-8">
+                 <p class="leading-relaxed mb-6">A Agrotins 2025 transcendeu uma simples feira, revelando-se um ecossistema vibrante de inovação, negócios e conhecimento. Apesar dos desafios logísticos, comuns em eventos de sua magnitude, a feira é um catalisador essencial para o agronegócio, impulsionando o networking e a disseminação de tecnologias. O evento é um estudo de caso valioso em gestão de megaeventos e marketing promocional.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-accent-earth mb-3">Importância para o Tocantins</h3>
+                        <p class="leading-relaxed">
+                            A feira é crucial para o desenvolvimento socioeconômico do Tocantins, atraindo investimentos e fomentando a cadeia produtiva. Ela solidifica o estado como um <strong class="text-accent-earth">polo chave do agronegócio no Norte do Brasil</strong>, mobilizando todos os 139 municípios e gerando impacto econômico expressivo.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent-secondary mb-2 text-center">Principais Áreas de Impacto da Agrotins</h3>
+                        <div class="chart-container" style="height: 280px; max-height:320px;">
+                            <canvas id="impactoAreasChart"></canvas>
+                        </div>
+                         <p class="text-xs text-gray-500 text-center mt-2">Representação qualitativa das áreas onde a Agrotins gera maior impacto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recomendacoes" class="my-10 md:my-16">
+            <h2 class="text-3xl font-bold text-accent-secondary mb-8 text-center">Recomendações Estratégicas</h2>
+            <p class="text-center text-accent-secondary mb-8 max-w-3xl mx-auto">Com base nas observações, são propostas sugestões para o contínuo aprimoramento da Agrotins e para os atores do setor agropecuário.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-3">Para Futuras Edições da Agrotins:</h3>
+                    <ul class="list-decimal list-inside text-sm space-y-2 pl-4">
+                        <li>Melhorar planejamento de acesso e estacionamento.</li>
+                        <li>Aprimorar gestão sanitária (mais unidades, limpeza frequente).</li>
+                        <li>Otimizar infraestrutura de alimentação.</li>
+                        <li>Reforçar sinalização interna do parque.</li>
+                        <li>Expandir uso de ferramentas digitais (apps, mapas interativos).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent-main mb-3">Para Empresas e Instituições do Setor:</h3>
+                    <ul class="list-decimal list-inside text-sm space-y-2 pl-4">
+                        <li>Manter investimento contínuo em P&D regionalizado.</li>
+                        <li>Focar na experiência do cliente com atendimento qualificado.</li>
+                        <li>Utilizar marketing criativo e segmentado.</li>
+                        <li>Fortalecer parcerias estratégicas (ensino, pesquisa, empresas).</li>
+                        <li>Dar ênfase à sustentabilidade nas práticas e produtos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="fontes" class="my-10 md:my-16">
+            <h2 class="text-3xl font-bold text-accent-secondary mb-8 text-center">Fontes de Informação</h2>
+            <div class="card">
+                <ol class="list-decimal list-inside text-sm space-y-3">
+                    <li id="fonte-1">
+                        FOLHA CAPITAL. <a href="https://folhacapital.com.br/em-pauta/fapt-marca-presenca-na-25o-edicao-da-agrotins-com-o-pavilhao-de-ciencia-tecnologia-e-inovacao/" target="_blank" class="text-accent-main hover:underline">Fapt marca presença na 25º edição da Agrotins com o Pavilhão de Ciência, Tecnologia e Inovação</a>. Acesso em: 24 mai. 2025.
+                    </li>
+                    <li id="fonte-2">
+                        TOCANTINS RURAL. <a href="https://tocantinsrural.com.br/agrotins-2025-impulsiona-o-agro-no-tocantins-e-destaca-7-empresas-que-investem-em-tecnologia/" target="_blank" class="text-accent-main hover:underline">Agrotins 2025 impulsiona o agro no Tocantins e destaca 7 empresas que investem em tecnologia</a>. Acesso em: 24 mai. 2025.
+                    </li>
+                    <li id="fonte-3">
+                        JORNAL DO TOCANTINS. <a href="https://www.jornaldotocantins.com.br/economia/agrotins-2025-feira-movimentou-mais-de-r-5-bilh-es-em-negocios-e-recebeu-192-mil-visitantes-diz-governo-1.3265880" target="_blank" class="text-accent-main hover:underline">Agrotins 2025: feira movimentou mais de R$ 5 bilhões em negócios e recebeu 192 mil visitantes, diz governo</a>. Acesso em: 24 mai. 2025.
+                    </li>
+                    <li id="fonte-4">
+                        UNITINS. <a href="https://www.unitins.br/nPortal/portal/noticias/detalhes/7259-2025-5-23-estande-da-unitins-recebe-mais-de-4-mil-visitantes-durante-agrotins-2025" target="_blank" class="text-accent-main hover:underline">Estande da Unitins recebe mais de 4 mil visitantes durante Agrotins 2025</a>. Acesso em: 24 mai. 2025.
+                    </li>
+                    <li id="fonte-5">
+                        G1 TOCANTINS. <a href="https://g1.globo.com/to/tocantins/noticia/2025/05/15/de-cao-robo-a-iogurte-de-flor-agrotins-apresenta-inovacao-e-tecnologias-que-facilitam-a-vida-no-campo.ghtml" target="_blank" class="text-accent-main hover:underline">De cão robô a iogurte de flor: Agrotins apresenta inovação e tecnologias que facilitam a vida no campo</a>. Acesso em: 24 mai. 2025.
+                    </li>
+                    <li id="fonte-6">
+                        INSTITUTO FEDERAL DO TOCANTINS. <a href="https://www.ifto.edu.br/noticias/participacao-do-ifto-na-agrotins-e-marcada-por-programacao-diversificada-e-destaques-de-projetos.1" target="_blank" class="text-accent-main hover:underline">Participação do IFTO na Agrotins teve programação diversificada e destaques de projetos</a>. Acesso em: 24 mai. 2025.
+                    </li>
+                    <li id="fonte-7">
+                        INSTITUTO FEDERAL DO TOCANTINS. <a href="https://www.ifto.edu.br/noticias/ifto-leva-ciencia-inovacao-e-sabores-a-agrotins-2025" target="_blank" class="text-accent-main hover:underline">IFTO leva ciência, inovação e sabores à Agrotins 2025</a>. Acesso em: 24 mai. 2025.
+                    </li>
+                    <li id="fonte-8">
+                        CONEXÃO TOCANTINS. <a href="https://conexaoto.com.br/2025/05/14/instituicoes-de-ensino-apresentam-na-agrotins-como-a-ciencia-esta-transformando-o-campo-no-tocantins" target="_blank" class="text-accent-main hover:underline">Instituições de ensino apresentam na Agrotins como a ciência está transformando o campo no Tocantins</a>. Acesso em: 25 mai. 2025.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <footer class="text-center py-10 mt-12 border-t border-green-200">
+            <p class="text-accent-secondary text-sm">&copy; 2025 Relatório Interativo Agrotins.</p>
+            <p class="text-xs text-gray-500">Baseado no Relatório Técnico de Visita de Gleydson, Estudante de Administração, IFTO.</p>
+            <p class="text-xs text-gray-500 mt-2">Organização: Governo do Tocantins (SEAGRO, SICS, ADAPEC, Ruraltins, FAPT, Tocantins Parcerias) e parceiros.</p>
+        </footer>
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxWidth = 16) => {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            let currentLine = '';
+            const lines = [];
+            for (const word of words) {
+                if ((currentLine + (currentLine ? ' ' : '') + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines.length > 0 ? lines : [label];
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            if (!item || !item.chart || !item.chart.data || !item.chart.data.labels || item.dataIndex === undefined) {
+                return '';
+            }
+            let label = item.chart.data.labels[item.dataIndex];
+            return Array.isArray(label) ? label.join(' ') : label;
+        };
+        
+        const colorTextPrimary = '#1A2E05';
+        const colorTextSecondary = '#3A5F0B';
+        const colorAccent1Main = '#4CAF50'; 
+        const colorAccent2Secondary = '#FFC107'; 
+        const colorAccent3Earth = '#A0522D'; 
+        const colorStatHighlight = '#FF9800'; 
+        const colorGrid = '#D1FAE5'; 
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: { color: colorTextPrimary }
+                },
+                tooltip: {
+                    callbacks: { title: tooltipTitleCallback },
+                    backgroundColor: colorTextPrimary,
+                    titleColor: '#F0FDF4', 
+                    bodyColor: '#F0FDF4',
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: colorTextSecondary, font: { size: 10 } },
+                    grid: { color: colorGrid }
+                },
+                x: {
+                    ticks: { color: colorTextSecondary, font: { size: 10 } },
+                    grid: { display: false }
+                }
+            }
+        };
+
+        const financeiroCtx = document.getElementById('financeiroChart').getContext('2d');
+        new Chart(financeiroCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2024', '2025'],
+                datasets: [{
+                    label: 'Movimentação (R$ Bilhões)',
+                    data: [4.02, 5.07],
+                    backgroundColor: [colorAccent3Earth, colorAccent1Main],
+                    borderColor: [colorAccent3Earth, colorAccent1Main],
+                    borderWidth: 1
+                }]
+            },
+            options: { ...commonChartOptions }
+        });
+
+        const inovacaoFocoCtx = document.getElementById('inovacaoFocoChart').getContext('2d');
+        new Chart(inovacaoFocoCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [wrapLabel('Alimentos'), wrapLabel('Produtividade Rural'), wrapLabel('Pesquisa Aplicada'), wrapLabel('Sustentabilidade')],
+                datasets: [{
+                    label: 'Focos de Inovação',
+                    data: [25, 30, 25, 20], 
+                    backgroundColor: [colorAccent1Main, colorAccent2Secondary, colorStatHighlight, colorAccent3Earth],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { position: 'right', labels: { color: colorTextPrimary, boxWidth: 15, padding: 10, font:{size:10} } }
+                },
+                scales: { x: { display: false }, y: { display: false } }
+            }
+        });
+
+        const impactoAreasCtx = document.getElementById('impactoAreasChart').getContext('2d');
+        new Chart(impactoAreasCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Desenvolvimento Econômico Regional'), 
+                    wrapLabel('Difusão de Inovação Tecnológica'), 
+                    wrapLabel('Networking e Novas Parcerias'), 
+                    wrapLabel('Fortalecimento da Agricultura Familiar')
+                ],
+                datasets: [{
+                    label: 'Nível de Impacto (Qualitativo)',
+                    data: [90, 85, 80, 75], 
+                    backgroundColor: [colorAccent1Main, colorAccent2Secondary, colorStatHighlight, colorAccent3Earth],
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                indexAxis: 'y',
+                plugins: { ...commonChartOptions.plugins, legend: { display: false } },
+                scales: {
+                    x: { ...commonChartOptions.scales.x, grid: { color: colorGrid } },
+                    y: { ...commonChartOptions.scales.y, ticks: {color: colorTextSecondary, font: {size:10}} }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
