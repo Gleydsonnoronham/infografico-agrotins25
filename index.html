@@ -7,26 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Application Structure Plan: 
-        The SPA is structured thematically:
-        1. Hero/Intro: Title, subtitle, key overall stats (visitors, R$ movement with a comparison chart, exhibitors, park size, novelties).
-        2. Event Highlights: Cards for IFTO, Unitins, FAPT, Familiar Agriculture, Social Impact (Agrotins Alimenta), with relevant images. A donut chart for "Innovation Focus Areas".
-        3. Management Analysis: Cards for Logistics, Marketing, and Customer Relations.
-        4. Conclusions & Impact: Summarized conclusions, importance for Tocantins. A horizontal bar chart for "Impact Areas".
-        5. Recommendations: Lists for future editions and sector players.
-        6. Sources: List of cited sources.
-        A sticky top navigation bar allows quick jumps. This narrative flow (overview -> specifics -> operations -> impact -> future -> sources) aims for better engagement and credibility.
-    -->
-    <!-- Visualization & Content Choices:
-        - R$ 5.07B vs R$ 4.02B: Goal: Compare. Viz: Bar Chart (Chart.js). Interaction: Tooltip. Justification: Clear visual comparison. Source indicated.
-        - Visitors, Exhibitors, Park Size, Municipalities: Goal: Inform. Viz: Large styled numbers (HTML/Tailwind). Justification: Quick stats. Sources indicated where applicable.
-        - IFTO, Unitins, FAPT details: Goal: Inform. Viz: Styled cards with text, Unicode icons, and embedded images. Justification: Concise findings, visual context. Sources indicated.
-        - Innovation Focus Areas (Qualitative): Goal: Organize/Inform. Viz: Donut Chart (Chart.js) - categories: Food, Productivity, Research, Sustainability. Data: Illustrative. Interaction: Tooltip. Justification: Visual summary.
-        - Agrotins Alimenta: Goal: Inform. Viz: Styled list/stats in a card. Justification: Clear social impact.
-        - Logistics, Marketing, CRM: Goal: Organize/Inform. Viz: Cards with bullet points. Justification: Structured summary.
-        - Importance of Agrotins (Qualitative Impact Areas): Goal: Inform/Organize. Viz: Horizontal Bar Chart (Chart.js) - labels: Economic Dev, Tech Innovation, Networking, Familiar Agr. Support. Data: Illustrative. Interaction: Tooltip. Justification: Visual impact areas.
-        - Recommendations: Goal: Inform. Viz: Styled lists. Justification: Actionable points.
-    -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -150,25 +130,25 @@
                     <h3 class="text-xl font-semibold text-accent-main mb-2">💡 IFTO: Vitrine Tecnológica</h3>
                     <p class="text-sm mb-2">Com 16 inovações<a href="#fonte-6" class="source-ref">[6]</a>, o IFTO brilhou. Destaques:</p>
                     <div class="my-3">
-                        <img src="URL_DA_SUA_IMAGEM_IXOGURTE.jpg" alt="Imagem do Ixogurte, iogurte da flor ixora" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Ixogurte+Indisponível'; this.alt='Imagem do Ixogurte indisponível'">
+                        <img src="imagens/ixogurte.png" alt="Imagem do Ixogurte, iogurte da flor ixora" class="embedded-image">
                     </div>
                     <ul class="list-disc list-inside text-sm space-y-1">
                         <li><strong>Ixogurte:</strong> Iogurte inovador da flor de ixora.<a href="#fonte-5" class="source-ref">[5]</a><a href="#fonte-7" class="source-ref">[7]</a></li>
                         <li><strong>Beephona:</strong> Tampa para colmeias que pode aumentar a produção de mel em 50%.<a href="#fonte-5" class="source-ref">[5]</a></li>
                         <li><strong>Cão Robô:</strong> Demonstração de tecnologia robótica aplicada ao campo.<a href="#fonte-5" class="source-ref">[5]</a></li>
                     </ul>
-                     <img src="URL_DA_SUA_IMAGEM_CAO_ROBO.jpg" alt="Imagem do Cão Robô apresentado na Agrotins" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Cão+Robô+Indisponível'; this.alt='Imagem do Cão Robô indisponível'">
+                     <img src="imagens/cao robo.png" alt="Imagem do Cão Robô apresentado na Agrotins" class="embedded-image">
                     <p class="text-xs text-gray-500 mt-2">Muitos outros projetos relevantes em alimentos e tecnologia foram exibidos.<a href="#fonte-6" class="source-ref">[6]</a></p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold text-accent-main mb-2">🔬 Unitins: Avanço Científico</h3>
-                    <img src="URL_DA_SUA_IMAGEM_UNITINS.jpg" alt="Imagem do estande da Unitins na Agrotins 2025" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Unitins+Indisponível'; this.alt='Imagem do estande da Unitins indisponível'">
+                    <img src="imagens/unitins.jpeg" alt="Imagem do estande da Unitins na Agrotins 2025" class="embedded-image">
                     <p class="text-sm mb-2">A Unitins demonstrou a força da pesquisa com estudos sobre fungos agrícolas e um laboratório entomológico detalhado. Seu estande recebeu mais de 4 mil visitantes.<a href="#fonte-4" class="source-ref">[4]</a></p>
                     <p class="text-xs text-gray-500 mt-2">Diversos outros estudos importantes para o agro e meio ambiente foram apresentados.</p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold text-accent-main mb-2">🚀 FAPT & CT&I: Hub de Criatividade</h3>
-                    <img src="URL_DA_SUA_IMAGEM_PAVILHAO_CTI.jpg" alt="Imagem do Pavilhão de Ciência, Tecnologia e Inovação da FAPT na Agrotins" class="embedded-image" onerror="this.src='https://placehold.co/600x400/E8F5E9/3A5F0B?text=Imagem+Pavilhão+CT&I+Indisponível'; this.alt='Imagem do Pavilhão CT&I indisponível'">
+                    <img src="imagens/Agrotins-Pavilhao-2024-2048x946.jpg" alt="Imagem do Pavilhão de Ciência, Tecnologia e Inovação da FAPT na Agrotins" class="embedded-image">
                     <p class="text-sm mb-2">O Pavilhão CT&I, com a FAPT, impulsionou a maratona "FAPTGulhas"<a href="#fonte-1" class="source-ref">[1]</a> e exibiu diversas tecnologias emergentes e startups.</p>
                     <p class="text-xs text-gray-500 mt-2">Foco em agricultura de precisão, bioeconomia e energias renováveis.</p>
                 </div>
