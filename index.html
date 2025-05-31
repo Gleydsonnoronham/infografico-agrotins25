@@ -65,11 +65,16 @@
             margin-bottom: 0.75rem; /* mb-3 */
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+        .icon-title {
+            font-size: 1.25rem; /* Ajuste para ícones de título */
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl">
             <div class="flex items-center justify-center h-16 space-x-2 sm:space-x-4">
                 <a href="#introducao" class="font-semibold text-xs sm:text-sm">Introdução</a>
                 <a href="#destaques" class="font-semibold text-xs sm:text-sm">Destaques</a>
@@ -81,7 +86,7 @@
         </div>
     </nav>
 
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-screen-xl">
         <header class="text-center my-8 md:my-12">
             <h1 class="text-4xl md:text-5xl font-bold text-stone-800 mb-3">Agrotins 2025: Relatório Interativo</h1>
             <p class="text-lg md:text-xl text-accent-secondary">Uma Análise da AgroEvolução no Coração do Brasil</p>
@@ -91,7 +96,7 @@
             <h2 class="text-3xl font-bold text-accent-secondary mb-6 text-center">Introdução: A Grandeza da Agrotins 2025</h2>
             <div class="card mb-8">
                 <p class="leading-relaxed mb-4">
-                    A Agrotins 2025, realizada de 13 a 17 de maio sob o tema central <strong class="text-accent-earth">"AgroEvolução" 🌱</strong>, reafirmou sua magnitude como a principal feira de tecnologia agropecuária do Norte do Brasil. Sediada no Parque Agrotecnológico Eng. Mauro Medanha em Palmas-TO (com <strong class="text-accent-earth">~700 mil m²</strong>), o evento destacou-se por melhorias como um novo <strong class="text-accent-earth">Pier e exposições náuticas ⚓</strong>. Esta análise compila as observações de uma visita técnica focada em avanços, gestão e o dinamismo do agronegócio tocantinense.
+                    A Agrotins 2025, realizada de 13 a 17 de maio sob o tema central <strong class="text-accent-earth">"AgroEvolução"</strong>, reafirmou sua magnitude como a principal feira de tecnologia agropecuária do Norte do Brasil. Sediada no Parque Agrotecnológico Eng. Mauro Medanha em Palmas-TO (com <strong class="text-accent-earth">~700 mil m²</strong>), o evento destacou-se por melhorias como um novo <strong class="text-accent-earth">Pier e exposições náuticas</strong>. Esta análise compila as observações de uma visita técnica focada em avanços, gestão e o dinamismo do agronegócio tocantinense.
                 </p>
                 <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center mb-6">
                     <div class="bg-highlight-soft p-4 rounded-lg shadow">
@@ -117,7 +122,7 @@
                     <div class="chart-container" style="height: 280px; max-height: 300px;">
                         <canvas id="financeiroChart"></canvas>
                     </div>
-                    <p class="text-xs text-gray-500 text-center mt-2">A Agrotins 2025 movimentou R$ 5,07 bilhões<a href="#fonte-3" class="source-ref">[3]</a>, superando os R$ 4,02 bilhões de 2024.</p>
+                    <p class="text-xs text-gray-500 text-center mt-2">Fonte dos dados financeiros: Jornal do Tocantins<a href="#fonte-3" class="source-ref">[3]</a>.</p>
                 </div>
             </div>
         </section>
@@ -127,69 +132,71 @@
              <p class="text-center text-accent-secondary mb-8 max-w-3xl mx-auto">A feira foi um palco vibrante para inovações tecnológicas<a href="#fonte-2" class="source-ref">[2]</a>, pesquisa científica e iniciativas de impacto social, com instituições de ensino e fomento<a href="#fonte-8" class="source-ref">[8]</a> desempenhando papéis cruciais.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-main mb-2">💡 IFTO: Vitrine Tecnológica</h3>
+                    <h3 class="text-xl font-semibold text-accent-main mb-2"><span class="icon-title">💡</span>IFTO: Vitrine Tecnológica</h3>
                     <p class="text-sm mb-2">Com 16 inovações<a href="#fonte-6" class="source-ref">[6]</a>, o IFTO brilhou. Destaques:</p>
                     <div class="my-3">
                         <img src="imagens/ixogurte.png" alt="Imagem do Ixogurte, iogurte da flor ixora" class="embedded-image">
                     </div>
-                    <ul class="list-disc list-inside text-sm space-y-1">
+                    <ul class="list-disc list-inside text-sm space-y-1 pl-4">
                         <li><strong>Ixogurte:</strong> Iogurte inovador da flor de ixora.<a href="#fonte-5" class="source-ref">[5]</a><a href="#fonte-7" class="source-ref">[7]</a></li>
                         <li><strong>Beephona:</strong> Tampa para colmeias que pode aumentar a produção de mel em 50%.<a href="#fonte-5" class="source-ref">[5]</a></li>
-                        <li><strong>Cão Robô:</strong> Demonstração de tecnologia robótica aplicada ao campo.<a href="#fonte-5" class="source-ref">[5]</a></li>
                     </ul>
-                     <img src="imagens/cao robo.png" alt="Imagem do Cão Robô apresentado na Agrotins" class="embedded-image">
                     <p class="text-xs text-gray-500 mt-2">Muitos outros projetos relevantes em alimentos e tecnologia foram exibidos.<a href="#fonte-6" class="source-ref">[6]</a></p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-main mb-2">🔬 Unitins: Avanço Científico</h3>
+                    <h3 class="text-xl font-semibold text-accent-main mb-2"><span class="icon-title">🔬</span>Unitins: Avanço Científico</h3>
                     <img src="imagens/unitins.jpeg" alt="Imagem do estande da Unitins na Agrotins 2025" class="embedded-image">
                     <p class="text-sm mb-2">A Unitins demonstrou a força da pesquisa com estudos sobre fungos agrícolas e um laboratório entomológico detalhado. Seu estande recebeu mais de 4 mil visitantes.<a href="#fonte-4" class="source-ref">[4]</a></p>
                     <p class="text-xs text-gray-500 mt-2">Diversos outros estudos importantes para o agro e meio ambiente foram apresentados.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-main mb-2">🚀 FAPT & CT&I: Hub de Criatividade</h3>
+                    <h3 class="text-xl font-semibold text-accent-main mb-2"><span class="icon-title">🚀</span>FAPT & CT&I: Hub de Criatividade</h3>
                     <img src="imagens/Agrotins-Pavilhao-2024-2048x946.jpg" alt="Imagem do Pavilhão de Ciência, Tecnologia e Inovação da FAPT na Agrotins" class="embedded-image">
-                    <p class="text-sm mb-2">O Pavilhão CT&I, com a FAPT, impulsionou a maratona "FAPTGulhas"<a href="#fonte-1" class="source-ref">[1]</a> e exibiu diversas tecnologias emergentes e startups.</p>
-                    <p class="text-xs text-gray-500 mt-2">Foco em agricultura de precisão, bioeconomia e energias renováveis.</p>
+                    <p class="text-sm mb-2">O Pavilhão CT&I, com a FAPT, impulsionou a maratona "FAPTGulhas"<a href="#fonte-1" class="source-ref">[1]</a>. Em frente ao estande, um <strong class="text-accent-earth">cão robô</strong> chamava atenção, demonstrando o potencial da robótica para análise de lavouras.<a href="#fonte-5" class="source-ref">[5]</a></p>
+                     <img src="imagens/cao robo.png" alt="Imagem do Cão Robô apresentado na Agrotins" class="embedded-image" style="max-height: 180px;">
+                    <p class="text-xs text-gray-500 mt-2">O espaço exibiu diversas tecnologias emergentes, startups e foco em agricultura de precisão e bioeconomia.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-main mb-2">🧺 Agricultura Familiar: Riqueza Local</h3>
+                    <h3 class="text-xl font-semibold text-accent-main mb-2"><span class="icon-title">🧺</span>Agricultura Familiar: Riqueza Local</h3>
                     <p class="text-sm">O pavilhão destacou a diversidade produtiva e cultural do Tocantins, com artesanatos e produtos de povos tradicionais.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-main mb-2">🤝 Agrotins Alimenta: Impacto Social</h3>
+                    <h3 class="text-xl font-semibold text-accent-main mb-2"><span class="icon-title">🤝</span>Agrotins Alimenta: Impacto Social</h3>
                     <p class="text-sm mb-2">O projeto arrecadou:</p>
-                    <ul class="list-disc list-inside text-sm space-y-1">
+                    <ul class="list-disc list-inside text-sm space-y-1 pl-4">
                         <li><strong class="stat-highlight">~3 mil</strong> cestas básicas</li>
                         <li><strong class="stat-highlight">R$ 100 mil</strong> em doações</li>
                     </ul>
                      <p class="text-xs text-gray-500 mt-2">Coordenado pela primeira-dama do estado, Karynne Sotero.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-main mb-2 text-center">🎯 Focos de Inovação</h3>
+                    <h3 class="text-xl font-semibold text-accent-main mb-2 text-center"><span class="icon-title">📊</span>Focos de Inovação</h3>
                      <p class="text-xs text-gray-500 text-center mb-2">Áreas de destaque nas inovações apresentadas.</p>
                     <div class="chart-container" style="height: 250px; max-height: 280px;">
                         <canvas id="inovacaoFocoChart"></canvas>
                     </div>
+                    <p class="text-xs text-gray-500 text-center mt-2">Representação ilustrativa dos focos de inovação, baseada nas temáticas dos projetos destacados neste relatório e nas fontes citadas<a href="#fonte-1" class="source-ref">[1]</a><a href="#fonte-5" class="source-ref">[5]</a><a href="#fonte-6" class="source-ref">[6]</a><a href="#fonte-7" class="source-ref">[7]</a><a href="#fonte-8" class="source-ref">[8]</a>.</p>
                 </div>
             </div>
         </section>
 
         <section id="gestao" class="my-10 md:my-16">
             <h2 class="text-3xl font-bold text-accent-secondary mb-8 text-center">Análise da Gestão do Evento</h2>
-            <p class="text-center text-accent-secondary mb-8 max-w-3xl mx-auto">Uma visão administrativa sobre a Agrotins 2025, abordando logística, marketing e relacionamento com o cliente, identificando pontos fortes e oportunidades de melhoria.</p>
+            <p class="text-center text-accent-secondary mb-8 max-w-3xl mx-auto">
+                As observações sobre a gestão do evento foram realizadas de forma pontual, com foco em alguns estandes visitados e na experiência geral como visitante. Dada a grandiosidade da Agrotins, com cerca de 1,2 mil expositores, uma análise administrativa exaustiva demandaria uma presença contínua e acesso a dados mais aprofundados, o que não foi o escopo desta visita. Contudo, as impressões coletadas oferecem uma noção inicial sobre os aspectos logísticos, de marketing e de relacionamento com o cliente.
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-earth mb-2">🚚 Organização e Logística</h3>
+                    <h3 class="text-xl font-semibold text-accent-earth mb-2"><span class="icon-title">🚚</span>Organização e Logística</h3>
                     <p class="text-sm mb-1"><strong>Positivo:</strong> Evento bem organizado internamente, variedade alimentar.</p>
                     <p class="text-sm"><strong>Desafios:</strong> Congestionamento no acesso, estacionamento lotado, manutenção de sanitários.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-earth mb-2">📢 Marketing e Comunicação</h3>
+                    <h3 class="text-xl font-semibold text-accent-earth mb-2"><span class="icon-title">📢</span>Marketing e Comunicação</h3>
                     <p class="text-sm">Estratégias visíveis com outdoors, banners criativos (Engetins) e panfletagem interna.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold text-accent-earth mb-2">👥 Relacionamento com Cliente</h3>
+                    <h3 class="text-xl font-semibold text-accent-earth mb-2"><span class="icon-title">👥</span>Relacionamento com Cliente</h3>
                     <p class="text-sm">Atendimento satisfatório, com destaque para clareza dos apresentadores da Unitins e FAPT.</p>
                 </div>
             </div>
@@ -211,7 +218,7 @@
                         <div class="chart-container" style="height: 280px; max-height:320px;">
                             <canvas id="impactoAreasChart"></canvas>
                         </div>
-                         <p class="text-xs text-gray-500 text-center mt-2">Representação qualitativa das áreas onde a Agrotins gera maior impacto.</p>
+                         <p class="text-xs text-gray-500 text-center mt-2">Representação qualitativa das áreas de impacto da Agrotins, inferida a partir das conclusões deste relatório e do panorama geral das fontes consultadas.</p>
                     </div>
                 </div>
             </div>
