@@ -10,8 +10,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F0FDF4; /* Green 50 - Fundo da página */
-            color: #1A2E05; /* Verde Floresta Escuro - Texto Principal */
+            background-color: #EAF2F8; /* Azul muito pálido / Cinza azulado claro */
+            color: #2C3E50; /* Azul ardósia escuro / Grafite */
             scroll-behavior: smooth;
         }
         .card {
@@ -35,21 +35,21 @@
                 max-height: 380px;
             }
         }
-        .stat-highlight { color: #FF9800; } /* Laranja - Destaque para estatísticas */
-        .text-accent-main { color: #4CAF50; } /* Verde Vibrante - Destaque principal */
-        .text-accent-secondary { color: #3A5F0B; } /* Verde Oliva Escuro - Texto secundário/detalhes */
-        .text-accent-earth { color: #A0522D; } /* Marrom Siena/Terra - Destaque terroso */
+        .stat-highlight { color: #E67E22; } /* Laranja Queimado */
+        .text-accent-main { color: #3498DB; } /* Azul Vibrante */
+        .text-accent-sustainability { color: #2ECC71; } /* Verde Esmeralda */
+        .text-accent-secondary { color: #5D6D7E; } /* Cinza azulado médio */
         
-        nav a { color: #3A5F0B; /* Verde Oliva Escuro para links da navegação */ }
-        nav a:hover { color: #FF9800; /* Laranja para hover na navegação */ }
+        nav a { color: #5D6D7E; }
+        nav a:hover { color: #3498DB; }
 
-        .bg-highlight-soft { background-color: #E8F5E9; /* Green 100 - Fundo suave para stats */ }
-        .border-highlight-soft { border-color: #D1FAE5; /* Green 200 - Borda suave */ }
+        .bg-highlight-soft { background-color: #D6EAF8; /* Azul mais claro para fundos de stats */ }
+        .border-custom { border-color: #EAECEE; /* Cinza muito claro para bordas */ }
         
         .source-ref {
             font-size: 0.7rem;
             vertical-align: super;
-            color: #FF9800; /* Laranja para destaque da referência */
+            color: #E67E22; 
             margin-left: 2px;
             text-decoration: none;
         }
@@ -66,7 +66,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .icon-title {
-            font-size: 1.25rem; /* Ajuste para ícones de título */
+            font-size: 1.25rem; 
             margin-right: 0.5rem;
             vertical-align: middle;
         }
@@ -89,40 +89,42 @@
     <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-screen-xl">
         <header class="text-center my-8 md:my-12">
             <h1 class="text-4xl md:text-5xl font-bold text-stone-800 mb-3">Agrotins 2025: Relatório Interativo</h1>
-            <p class="text-lg md:text-xl text-accent-secondary">Uma Análise da AgroEvolução no Coração do Brasil</p>
+            <p class="text-lg md:text-xl text-accent-secondary">Uma Análise da <span class="text-accent-main">AgroEvolução</span> no Coração do Brasil</p>
         </header>
 
         <section id="introducao" class="my-10 md:my-16">
-            <h2 class="text-3xl font-bold text-accent-secondary mb-6 text-center">Introdução: A Grandeza da Agrotins 2025</h2>
+            <h2 class="text-3xl font-bold text-accent-secondary mb-6 text-center">Introdução: A Grandeza da Agrotins</h2>
             <div class="card mb-8">
                 <p class="leading-relaxed mb-4">
-                    A Agrotins 2025, realizada de 13 a 17 de maio sob o tema central <strong class="text-accent-earth">"AgroEvolução"</strong>, reafirmou sua magnitude como a principal feira de tecnologia agropecuária do Norte do Brasil. Sediada no Parque Agrotecnológico Eng. Mauro Medanha em Palmas-TO (com <strong class="text-accent-earth">~700 mil m²</strong>), o evento destacou-se por melhorias como um novo <strong class="text-accent-earth">Pier e exposições náuticas</strong>. Esta análise compila as observações de uma visita técnica focada em avanços, gestão e o dinamismo do agronegócio tocantinense.
+                    A Agrotins, principal feira de tecnologia agropecuária do Norte do Brasil, tem demonstrado uma evolução constante. A edição de 2025, com o tema <strong class="text-accent-main">"AgroEvolução"</strong>, ocorreu de 13 a 17 de maio no Parque Agrotecnológico Eng. Mauro Medanha em Palmas-TO, um espaço de <strong class="text-accent-secondary">~700 mil m²</strong> (expansão sobre os ~500 mil m² de 2024<a href="#fonte-12" class="source-ref">[12]</a>). O evento incluiu novidades como um novo Pier e exposições náuticas. Em 2024, o tema foi "Bioeconomia"<a href="#fonte-12" class="source-ref">[12]</a>, e em 2023, "Compliance no Agro". Esta análise compila observações da visita à edição 2025.
                 </p>
                 <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center mb-6">
                     <div class="bg-highlight-soft p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold stat-highlight">~200K<a href="#fonte-3" class="source-ref">[3]</a></div>
-                        <div class="text-sm text-accent-secondary mt-1">Visitantes</div>
+                        <div class="text-3xl md:text-4xl font-bold stat-highlight">~192K<a href="#fonte-3" class="source-ref">[3]</a></div>
+                        <div class="text-sm text-accent-secondary mt-1">Visitantes (2025)</div>
+                        <div class="text-xs text-gray-500 mt-1">(2024: >200K<a href="#fonte-9" class="source-ref">[9]</a>; 2023: ~196K)</div>
                     </div>
                     <div class="bg-highlight-soft p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold stat-highlight">1,2K</div>
-                        <div class="text-sm text-accent-secondary mt-1">Expositores (+33%)</div>
+                        <div class="text-3xl md:text-4xl font-bold stat-highlight">1,2K<a href="#fonte-nota-expositor-2025" class="source-ref">[Nota]</a></div>
+                        <div class="text-sm text-accent-secondary mt-1">Expositores (2025)</div>
+                         <div class="text-xs text-gray-500 mt-1">(2024: ~950<a href="#fonte-11" class="source-ref">[11]</a>; 2023: 890)</div>
                     </div>
                     <div class="bg-highlight-soft p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold stat-highlight">139</div>
+                        <div class="text-3xl md:text-4xl font-bold stat-highlight">139</div>
                         <div class="text-sm text-accent-secondary mt-1">Municípios Mobilizados</div>
                     </div>
                      <div class="bg-highlight-soft p-4 rounded-lg shadow">
-                        <div class="text-4xl font-bold stat-highlight">16<a href="#fonte-6" class="source-ref">[6]</a></div>
+                        <div class="text-3xl md:text-4xl font-bold stat-highlight">16<a href="#fonte-6" class="source-ref">[6]</a></div>
                         <div class="text-sm text-accent-secondary mt-1">Inovações do IFTO</div>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 mb-4">A organização, liderada pelo Governo do Tocantins e diversos parceiros, foi fundamental para o sucesso do evento.</p>
+                <p class="text-sm text-gray-600 mb-4">A organização é do Governo do Tocantins e parceiros.</p>
                 <div>
                     <h3 class="text-xl font-semibold text-accent-secondary mb-3 text-center">Movimentação Financeira (em Bilhões R$)</h3>
                     <div class="chart-container" style="height: 280px; max-height: 300px;">
                         <canvas id="financeiroChart"></canvas>
                     </div>
-                    <p class="text-xs text-gray-500 text-center mt-2">Fonte dos dados financeiros: Jornal do Tocantins<a href="#fonte-3" class="source-ref">[3]</a>.</p>
+                     <p class="text-xs text-gray-500 text-center mt-2">Agrotins 2025: R$ 5,07 Bi<a href="#fonte-3" class="source-ref">[3]</a>. Agrotins 2024: ~R$ 4,02 Bi<a href="#fonte-9" class="source-ref">[9]</a> (outra fonte: >R$4,2 Bi). Agrotins 2023: R$ 3 Bi.</p>
                 </div>
             </div>
         </section>
@@ -152,7 +154,7 @@
                 <div class="card">
                     <h3 class="text-xl font-semibold text-accent-main mb-2"><span class="icon-title">🚀</span>FAPT & CT&I: Hub de Criatividade</h3>
                     <img src="imagens/Agrotins-Pavilhao-2024-2048x946.jpg" alt="Imagem do Pavilhão de Ciência, Tecnologia e Inovação da FAPT na Agrotins" class="embedded-image">
-                    <p class="text-sm mb-2">O Pavilhão CT&I, com a FAPT, impulsionou a maratona "FAPTGulhas"<a href="#fonte-1" class="source-ref">[1]</a>. Em frente ao estande, um <strong class="text-accent-earth">cão robô</strong> chamava atenção, demonstrando o potencial da robótica para análise de lavouras.<a href="#fonte-5" class="source-ref">[5]</a></p>
+                    <p class="text-sm mb-2">O Pavilhão CT&I, com a FAPT<a href="#fonte-1" class="source-ref">[1]</a><a href="#fonte-10" class="source-ref">[10]</a>, impulsionou a maratona "FAPTGulhas"<a href="#fonte-10b" class="source-ref">[10b]</a>. Em frente ao estande, um <strong class="text-accent-earth">cão robô</strong> chamava atenção, demonstrando o potencial da robótica para análise de lavouras.<a href="#fonte-5" class="source-ref">[5]</a></p>
                      <img src="imagens/cao robo.png" alt="Imagem do Cão Robô apresentado na Agrotins" class="embedded-image" style="max-height: 180px;">
                     <p class="text-xs text-gray-500 mt-2">O espaço exibiu diversas tecnologias emergentes, startups e foco em agricultura de precisão e bioeconomia.</p>
                 </div>
@@ -183,13 +185,13 @@
         <section id="gestao" class="my-10 md:my-16">
             <h2 class="text-3xl font-bold text-accent-secondary mb-8 text-center">Análise da Gestão do Evento</h2>
             <p class="text-center text-accent-secondary mb-8 max-w-3xl mx-auto">
-                As observações sobre a gestão do evento foram realizadas de forma pontual, com foco em alguns estandes visitados e na experiência geral como visitante. Dada a grandiosidade da Agrotins, com cerca de 1,2 mil expositores, uma análise administrativa exaustiva demandaria uma presença contínua e acesso a dados mais aprofundados, o que não foi o escopo desta visita. Contudo, as impressões coletadas oferecem uma noção inicial sobre os aspectos logísticos, de marketing e de relacionamento com o cliente.
+                As observações sobre a gestão do evento foram realizadas de forma pontual, com foco em alguns estandes visitados e na experiência geral como visitante. Dada a grandiosidade da Agrotins, com cerca de 1,2 mil expositores na edição 2025, uma análise administrativa exaustiva demandaria uma presença contínua em todos os dias do evento e acesso a dados mais aprofundados, o que não foi o escopo desta visita. Contudo, as impressões coletadas oferecem uma noção inicial sobre os aspectos logísticos, de marketing e de relacionamento com o cliente.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="card">
                     <h3 class="text-xl font-semibold text-accent-earth mb-2"><span class="icon-title">🚚</span>Organização e Logística</h3>
                     <p class="text-sm mb-1"><strong>Positivo:</strong> Evento bem organizado internamente, variedade alimentar.</p>
-                    <p class="text-sm"><strong>Desafios:</strong> Congestionamento no acesso, estacionamento lotado, manutenção de sanitários.</p>
+                    <p class="text-sm"><strong>Desafios:</strong> Congestionamento no acesso, estacionamento lotado. Apesar da informação de ampliação da estrutura de sanitários em 2024<a href="#fonte-11" class="source-ref">[11]</a>, na edição de 2025 foram identificados problemas de limpeza e odor forte nos sanitários de contêineres, tornando alguns inviáveis para uso.</p>
                 </div>
                 <div class="card">
                     <h3 class="text-xl font-semibold text-accent-earth mb-2"><span class="icon-title">📢</span>Marketing e Comunicação</h3>
@@ -279,11 +281,29 @@
                     <li id="fonte-8">
                         CONEXÃO TOCANTINS. <a href="https://conexaoto.com.br/2025/05/14/instituicoes-de-ensino-apresentam-na-agrotins-como-a-ciencia-esta-transformando-o-campo-no-tocantins" target="_blank" class="text-accent-main hover:underline">Instituições de ensino apresentam na Agrotins como a ciência está transformando o campo no Tocantins</a>. Acesso em: 25 mai. 2025.
                     </li>
+                    <li id="fonte-9">
+                        AF NOTÍCIAS. <a href="https://afnoticias.com.br/estado/agrotins-2024-bate-recordes-de-publico-expositores-e-volume-de-negocios-mais-de-r-4-2-bilhoes" target="_blank" class="text-accent-main hover:underline">Agrotins 2024 bate recordes de público, expositores e volume de negócios, mais de R$ 4,2 bilhões</a>. Acesso em: 31 mai. 2025.
+                    </li>
+                    <li id="fonte-10">
+                        GOVERNO DO TOCANTINS - FAPT. <a href="https://www.to.gov.br/fapt/noticias/pavilhao-da-fapt-destaca-pesquisa-inovacao-e-protagonismo-cientifico-na-agrotins/5lmmzdd0dh4y" target="_blank" class="text-accent-main hover:underline">Pavilhão da FAPT destaca pesquisa, inovação e protagonismo científico na Agrotins</a>. Acesso em: 31 mai. 2025.
+                    </li>
+                     <li id="fonte-10b">
+                        GOVERNO DO TOCANTINS - FAPT. <a href="https://www.to.gov.br/fapt/noticias/faptgulhas-celebra-inovacao-e-premia-projetos-sustentaveis-para-o-agro-tocantinense/72vshyxo51ml" target="_blank" class="text-accent-main hover:underline">FAPTGulhas celebra inovação e premia projetos sustentáveis para o agro tocantinense</a>. Acesso em: 31 mai. 2025.
+                    </li>
+                    <li id="fonte-11">
+                        CONEXÃO TOCANTINS. <a href="https://conexaoto.com.br/2024/05/14/agrotins-2024-tem-expansao-de-area-e-cerca-de-950-expositores-solenidade-com-autoridades-acontece-amanha" target="_blank" class="text-accent-main hover:underline">Agrotins 2024 tem expansão de área e cerca de 950 expositores</a>. Acesso em: 31 mai. 2025.
+                    </li>
+                    <li id="fonte-12">
+                        TOCANTINS RURAL. <a href="https://tocantinsrural.com.br/agrotins-2024-evento-com-tematica-da-bioeconomia-espera-receber-mais-de-900-expositores-com-espaco-ampliado-para-500-mil-m%C2%B2/" target="_blank" class="text-accent-main hover:underline">Agrotins 2024: Evento com temática da bioeconomia espera receber mais de 900 expositores, com espaço ampliado para 500 mil m²</a>. Acesso em: 31 mai. 2025.
+                    </li>
+                     <li id="fonte-nota-expositor-2025">
+                        Nota: Número de expositores de 2025 (1,2 mil) e 2023 (890) e movimentação financeira de 2023 (R$3Bi) foram informados pelo solicitante, assumidos como dados consolidados de sua pesquisa.
+                    </li>
                 </ol>
             </div>
         </section>
 
-        <footer class="text-center py-10 mt-12 border-t border-green-200">
+        <footer class="text-center py-10 mt-12 border-t border-custom">
             <p class="text-accent-secondary text-sm">&copy; 2025 Relatório Interativo Agrotins.</p>
             <p class="text-xs text-gray-500">Baseado no Relatório Técnico de Visita de Gleydson, Estudante de Administração, IFTO.</p>
             <p class="text-xs text-gray-500 mt-2">Organização: Governo do Tocantins (SEAGRO, SICS, ADAPEC, Ruraltins, FAPT, Tocantins Parcerias) e parceiros.</p>
@@ -321,13 +341,13 @@
             return Array.isArray(label) ? label.join(' ') : label;
         };
         
-        const colorTextPrimary = '#1A2E05';
-        const colorTextSecondary = '#3A5F0B';
-        const colorAccent1Main = '#4CAF50'; 
-        const colorAccent2Secondary = '#FFC107'; 
-        const colorAccent3Earth = '#A0522D'; 
-        const colorStatHighlight = '#FF9800'; 
-        const colorGrid = '#D1FAE5'; 
+        const colorTextPrimary = '#2C3E50';
+        const colorTextSecondary = '#5D6D7E';
+        const colorAccent1Main = '#3498DB'; 
+        const colorAccent2Sustainability = '#2ECC71'; 
+        const colorAccent3Details = '#BDC3C7'; 
+        const colorStatHighlight = '#E67E22'; 
+        const colorGrid = '#EAECEE'; 
 
         const commonChartOptions = {
             responsive: true,
@@ -339,8 +359,8 @@
                 tooltip: {
                     callbacks: { title: tooltipTitleCallback },
                     backgroundColor: colorTextPrimary,
-                    titleColor: '#F0FDF4', 
-                    bodyColor: '#F0FDF4',
+                    titleColor: '#EAF2F8', 
+                    bodyColor: '#EAF2F8',
                 }
             },
             scales: {
@@ -356,16 +376,17 @@
             }
         };
 
+        // Financeiro Chart (atualizado para incluir 2023)
         const financeiroCtx = document.getElementById('financeiroChart').getContext('2d');
         new Chart(financeiroCtx, {
             type: 'bar',
             data: {
-                labels: ['2024', '2025'],
+                labels: ['2023', '2024', '2025'],
                 datasets: [{
                     label: 'Movimentação (R$ Bilhões)',
-                    data: [4.02, 5.07],
-                    backgroundColor: [colorAccent3Earth, colorAccent1Main],
-                    borderColor: [colorAccent3Earth, colorAccent1Main],
+                    data: [3.00, 4.02, 5.07], // Dados fornecidos por você
+                    backgroundColor: [colorAccent3Details, colorAccent2Sustainability, colorAccent1Main],
+                    borderColor: [colorAccent3Details, colorAccent2Sustainability, colorAccent1Main],
                     borderWidth: 1
                 }]
             },
@@ -380,7 +401,7 @@
                 datasets: [{
                     label: 'Focos de Inovação',
                     data: [25, 30, 25, 20], 
-                    backgroundColor: [colorAccent1Main, colorAccent2Secondary, colorStatHighlight, colorAccent3Earth],
+                    backgroundColor: [colorAccent1Main, colorAccent2Sustainability, colorStatHighlight, '#7F8C8D' /* Cinza um pouco mais escuro */],
                     hoverOffset: 4
                 }]
             },
@@ -407,7 +428,7 @@
                 datasets: [{
                     label: 'Nível de Impacto (Qualitativo)',
                     data: [90, 85, 80, 75], 
-                    backgroundColor: [colorAccent1Main, colorAccent2Secondary, colorStatHighlight, colorAccent3Earth],
+                    backgroundColor: [colorAccent1Main, colorAccent2Sustainability, colorStatHighlight, '#7F8C8D'],
                 }]
             },
             options: {
@@ -423,3 +444,18 @@
     </script>
 </body>
 </html>
+```
+
+**Mudanças Realizadas (Fase 1):**
+
+* **Nova Paleta de Cores:** Aplicada conforme especificado ("Tecnologia e Sustentabilidade no Agro").
+* **Dados Atualizados na Introdução:**
+    * Tema de 2024 ("Bioeconomia") e 2023 ("Compliance no Agro") adicionados.
+    * Área do parque em 2024 (500 mil m²) adicionada para comparação com 2025 (700 mil m²).
+    * Dados de visitantes e expositores de 2023, 2024 e 2025 agora aparecem juntos para contextualizar a evolução.
+    * O gráfico de movimentação financeira foi atualizado para incluir o dado de R$ 3 Bi para 2023.
+* **Card da FAPT:** Referências às novas fontes sobre o Pavilhão e o FAPTGulhas foram adicionadas.
+* **Observação sobre Sanitários:** Adicionada a informação sobre a ampliação em 2024 e a persistência do problema nos contêineres em 2025 na seção "Organização e Logística".
+* **Novas Fontes Adicionadas:** As seis novas fontes foram incluídas na seção "Fontes de Informação" com numeração contínua e referenciadas nos locais apropriados do texto. Uma nota foi adicionada para os dados de expositores de 2025/2023 e movimentação de 2023, que foram fornecidos por você.
+
+Por favor, revise estas alterações da Fase 1. Assim que você estiver satisfeito, podemos prosseguir para a **Fase 2**, que incluirá os novos gráficos de evolução e a seção de projeções para Agrotins 20
