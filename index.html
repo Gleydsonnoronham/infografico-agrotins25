@@ -7,6 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Application Structure Plan: 
+        The SPA is structured thematically:
+        1. Hero/Intro: Title, subtitle, key overall stats (visitors, R$ movement with a comparison chart, exhibitors, park size, novelties).
+        2. Event Highlights: Cards for IFTO, Unitins, FAPT (now including robot dog), Familiar Agriculture, Social Impact (Agrotins Alimenta). A donut chart for "Innovation Focus Areas".
+        3. Management Analysis: Cards for Logistics, Marketing, and Customer Relations, with context on limited observation.
+        4. Conclusions & Impact: Summarized conclusions, importance for Tocantins. A horizontal bar chart for "Impact Areas".
+        5. Recommendations: Lists for future editions and sector players.
+        6. Sources: List of cited sources.
+        A sticky top navigation bar allows quick jumps. Emojis are minimal. Lateral margins increased for better centering. Graphs have source/basis clarification.
+    -->
+    <!-- Visualization & Content Choices:
+        - R$ 5.07B vs R$ 4.02B: Goal: Compare. Viz: Bar Chart (Chart.js). Interaction: Tooltip. Justification: Clear visual comparison. Source indicated.
+        - Visitors, Exhibitors, Park Size, Municipalities: Goal: Inform. Viz: Large styled numbers (HTML/Tailwind). Justification: Quick stats. Sources indicated where applicable.
+        - IFTO, Unitins, FAPT details: Goal: Inform. Viz: Styled cards with text, Unicode icons, and embedded images (relative paths). Robot dog moved to FAPT. Justification: Concise findings, visual context. Sources indicated.
+        - Innovation Focus Areas (Qualitative): Goal: Organize/Inform. Viz: Donut Chart (Chart.js) - categories: Food, Productivity, Research, Sustainability. Data: Illustrative, basis clarified. Interaction: Tooltip. Justification: Visual summary.
+        - Agrotins Alimenta: Goal: Inform. Viz: Styled list/stats in a card. Justification: Clear social impact.
+        - Logistics, Marketing, CRM: Goal: Organize/Inform. Viz: Cards with bullet points. Basis of analysis clarified. Justification: Structured summary.
+        - Importance of Agrotins (Qualitative Impact Areas): Goal: Inform/Organize. Viz: Horizontal Bar Chart (Chart.js) - labels: Economic Dev, Tech Innovation, Networking, Familiar Agr. Support. Data: Illustrative, basis clarified. Interaction: Tooltip. Justification: Visual impact areas.
+        - Recommendations: Goal: Inform. Viz: Styled lists. Justification: Actionable points.
+    -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -444,18 +464,3 @@
     </script>
 </body>
 </html>
-```
-
-**Mudanças Realizadas (Fase 1):**
-
-* **Nova Paleta de Cores:** Aplicada conforme especificado ("Tecnologia e Sustentabilidade no Agro").
-* **Dados Atualizados na Introdução:**
-    * Tema de 2024 ("Bioeconomia") e 2023 ("Compliance no Agro") adicionados.
-    * Área do parque em 2024 (500 mil m²) adicionada para comparação com 2025 (700 mil m²).
-    * Dados de visitantes e expositores de 2023, 2024 e 2025 agora aparecem juntos para contextualizar a evolução.
-    * O gráfico de movimentação financeira foi atualizado para incluir o dado de R$ 3 Bi para 2023.
-* **Card da FAPT:** Referências às novas fontes sobre o Pavilhão e o FAPTGulhas foram adicionadas.
-* **Observação sobre Sanitários:** Adicionada a informação sobre a ampliação em 2024 e a persistência do problema nos contêineres em 2025 na seção "Organização e Logística".
-* **Novas Fontes Adicionadas:** As seis novas fontes foram incluídas na seção "Fontes de Informação" com numeração contínua e referenciadas nos locais apropriados do texto. Uma nota foi adicionada para os dados de expositores de 2025/2023 e movimentação de 2023, que foram fornecidos por você.
-
-Por favor, revise estas alterações da Fase 1. Assim que você estiver satisfeito, podemos prosseguir para a **Fase 2**, que incluirá os novos gráficos de evolução e a seção de projeções para Agrotins 20
